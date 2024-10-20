@@ -10,3 +10,7 @@ data class Song(
     val genre: String,
     val isFavorite: Boolean
 )
+
+fun List<Song>.sortAlphabetically(): List<Song> {
+    return this.sortedWith(compareByDescending<Song> { it.isFavorite }.thenBy { it.name })
+}

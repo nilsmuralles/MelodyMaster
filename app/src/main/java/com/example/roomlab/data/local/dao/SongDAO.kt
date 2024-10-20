@@ -3,7 +3,6 @@ package com.example.roomlab.data.local.dao
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
-import com.example.roomlab.data.local.entity.ArtistEntity
 import com.example.roomlab.data.local.entity.SongEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -16,5 +15,5 @@ interface SongDAO {
     @Query("UPDATE SongEntity SET isFavorite = :isFav WHERE id = :id")
     suspend fun updateFavorite(id: Int, isFav: Boolean)
     @Query("SELECT * FROM SongEntity WHERE artistID = :artistID")
-    suspend fun getSongsFromArtist(artistID: String): List<SongEntity>
+    fun getSongsFromArtist(artistID: String): Flow<List<SongEntity>>
 }

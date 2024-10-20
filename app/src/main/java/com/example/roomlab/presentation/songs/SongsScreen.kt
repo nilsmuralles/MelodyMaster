@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.roomlab.domain.model.Song
+import com.example.roomlab.domain.model.sortAlphabetically
 import com.example.roomlab.presentation.common.LoadingLayout
 import com.example.roomlab.presentation.utilities.randomColor
 import com.example.roomlab.ui.theme.RoomLabTheme
@@ -43,7 +44,7 @@ fun SongsRoute(
     val state by viewModel.uiState.collectAsStateWithLifecycle()
     val songs by viewModel.songs.collectAsStateWithLifecycle(emptyList())
     SongsScreen(
-        songs = songs,
+        songs = songs.sortAlphabetically(),
         songsScreenState = state,
         onFavClick = viewModel::onFavClick
     )
